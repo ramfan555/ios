@@ -1,0 +1,15 @@
+# Encrypt the distribution certificate
+openssl aes-256-cbc -k "$ENCRYPTION_KEY" -in distribution_certificate.p12 -out encrypted_distribution_certificate.p12.enc -a
+
+# Encrypt the distribution certificate password
+openssl aes-256-cbc -k "$ENCRYPTION_KEY" -in distribution_certificate_password.txt -out encrypted_distribution_certificate_password.txt.enc -a
+
+Replace distribution_certificate.p12 and distribution_certificate_password.txt with the names of your distribution certificate file and its password file. $ENCRYPTION_KEY should be replaced with the encryption key you set up as a GitHub secret.
+
+Encrypt the Provisioning Profile:
+Encrypt the provisioning profile using openssl:
+# Encrypt the provisioning profile
+openssl aes-256-cbc -k "$ENCRYPTION_KEY" -in provisioning_profile.mobileprovision -out encrypted_provisioning_profile.mobileprovision.enc -a
+
+Replace provisioning_profile.mobileprovision with the name of your provisioning profile file.
+
